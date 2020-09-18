@@ -5,7 +5,13 @@
     <title></title>
   </head>
   <body>
-    <h1>This is the show page(for individual clips)</h1>
+    <h2><%=clip.title%></h2>
+    <h3><%=clip.mode%></h3>
+    <h5>Posted on: <%=clip.createdAt%></h5>
+    <video width='640' height='480' controls>
+      <source src="<%=clip.link%>" type="video/mp4">
+    </video></br>
     <a href="/home">This is a link Back Home</a>
+    <a href="/edit/<%=clip.id%>">Edit Clip</a>
   </body>
 </html>

@@ -9,9 +9,9 @@
     <%for(let key in clips){%>
       <div class="clips">
         <h3><%=clips[key].title%></h3>
-        <video width= width:'240' height='180' autoplay loop muted>
+        <a href="/user/<%=clips[key].id%>"><video width= width:'240' height='180' autoplay loop muted>
           <source src="<%=clips[key].link%>" type="video/mp4">
-        </video>
+        </video></a>
       </div>
     <%}%>
     <a href="/asdfad">This is the link to the user profile</a>

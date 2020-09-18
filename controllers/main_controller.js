@@ -28,7 +28,18 @@ router.post('/home', (req, res) => {
 
 //Edit Route
 router.get('/edit/:id', (req, res) => {
-  res.render('main/edit.ejs')
+  Clip.findById(req.params.id, (err, foundClip) => {
+    res.render('main/edit.ejs',
+    {
+      clip: foundClip
+    })
+  })
+})
+
+router.put('/:user/:id', (req, res) => {
+  Clip.findByIdAndUpdate(req.params.id, req.body, {new:true}, (err, updateClip) => {
+    res.redirect(`/user/${req.params.id}`)
+  })
 })
 
 //Profile Route
@@ -39,7 +50,12 @@ router.get('/:user', (req, res) => {
 
 //Show Route
 router.get('/:user/:id', (req, res) => {
-  res.render('main/show.ejs')
+  Clip.findById(req.params.id, (err, foundClip) => {
+    res.render('main/show.ejs',
+    {
+      clip: foundClip
+    })
+  })
 })
 
 //Delete Route
