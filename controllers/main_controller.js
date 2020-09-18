@@ -8,12 +8,22 @@ const Clip = require('../models/clip_model.js')
 
 //Home Route
 router.get('/home' , (req, res) => {
-  res.render('main/home.ejs');
+  Clip.find({}, (err, allClips) => {
+    res.render('main/home.ejs',
+    {
+      clips: allClips
+    });
+  })
 });
 
 //Create Route
 router.get('/add', (req, res) => {
   res.render('main/new.ejs')
+})
+router.post('/home', (req, res) => {
+  Clip.create(req.body, (err, newClip) => {
+    res.redirect('/home')
+  })
 })
 
 //Edit Route
