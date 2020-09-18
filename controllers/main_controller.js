@@ -1,5 +1,6 @@
 const express = require('express')
 const router = express.Router();
+const Clip = require('../models/clip_model.js')
 
 //___________________
 // Routes
@@ -33,7 +34,7 @@ router.get('/:user/:id', (req, res) => {
 
 //Delete Route
 router.delete('/:user/:id', (req, res) => {
-  
+
 })
 
 
