@@ -60,7 +60,9 @@ router.get('/:user/:id', (req, res) => {
 
 //Delete Route
 router.delete('/:user/:id', (req, res) => {
-
+  Clip.findByIdAndRemove(req.params.id, (err, data) => {
+    res.redirect('/home')
+  })
 })
 
 

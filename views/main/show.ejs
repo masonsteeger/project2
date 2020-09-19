@@ -11,7 +11,10 @@
     <video width='640' height='480' controls>
       <source src="<%=clip.link%>" type="video/mp4">
     </video></br>
+    <a href="/edit/<%=clip.id%>"><button type="button">EDIT CLIP</button></a>
+    <form class="" action="/user/<%=clip.id%>?_method=DELETE" method="POST">
+      <input type="submit" value="DELETE">
+    </form>
     <a href="/home">This is a link Back Home</a>
-    <a href="/edit/<%=clip.id%>">Edit Clip</a>
   </body>
 </html>
