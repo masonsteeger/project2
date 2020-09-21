@@ -5,9 +5,12 @@
     <title></title>
   </head>
   <body>
+    <%-include('../partials/header.ejs')%>
     <h1>This is the User Profile page(shows users clips)</h1>
     <a href="/home">This is a link Back Home</a>
     <a href="/asdfas/asdfasd">This is the link to the users clips</a>
+    <%if(currentUser){%>
     <a href="/edit/asdfasdf">This is a link to edit the users clips</a>
+    <%}%>
   </body>
 </html>

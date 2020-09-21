@@ -5,8 +5,9 @@
     <title></title>
   </head>
   <body>
+    <%-include('../partials/header.ejs')%>
     <h1>This is the Edit Page for clips</h1>
-    <form class="" action="/user/<%=clip.id%>?_method=PUT" method="POST">
+    <form class="" action="/clip/<%=clip.id%>?_method=PUT" method="POST">
       <label for="title">Title</label>
       <input id="title" type="text" name="title" value="<%=clip.title%>">
       <label for="mode">Game Mode</label>

@@ -2,8 +2,9 @@
 //Dependencies
 //___________________
 const express = require('express');
-const methodOverride  = require('method-override');
+const session = require('express-session');
 const mongoose = require ('mongoose');
+const methodOverride  = require('method-override');
 const app = express ();
 const db = mongoose.connection;
 require('dotenv').config();
@@ -13,6 +14,21 @@ require('dotenv').config();
 //___________________
 // Allow use of Heroku's port or your own local port, depending on the environment
 const PORT = process.env.PORT;
+
+
+//___________________
+//Middleware
+//___________________
+
+//use public folder for static assets
+app.use(express.static('public'));
+// populates req.body with parsed info from forms - if no data from forms will return an empty object {}
+app.use(express.urlencoded({ extended: false }));// extended: false - does not allow nested objects in query strings
+app.use(express.json());// returns middleware that only parses JSON - may or may not need it depending on your project
+//use method override
+app.use(methodOverride('_method'));// allow POST, PUT and DELETE from a form
+app.use(session({secret:process.env.SECRET, resave:false, saveUninitialized: false}))
+
 
 //___________________
 //Database
@@ -30,25 +46,18 @@ db.on('error', (err) => console.log(err.message + ' is Mongod not running?'));
 db.on('connected', () => console.log('mongo connected: ', MONGODB_URI));
 db.on('disconnected', () => console.log('mongo disconnected'));
 
-//___________________
-//Middleware
-//___________________
-
-//use public folder for static assets
-app.use(express.static('public'));
-
-// populates req.body with parsed info from forms - if no data from forms will return an empty object {}
-app.use(express.urlencoded({ extended: false }));// extended: false - does not allow nested objects in query strings
-app.use(express.json());// returns middleware that only parses JSON - may or may not need it depending on your project
-
-//use method override
-app.use(methodOverride('_method'));// allow POST, PUT and DELETE from a form
 
 //___________________
 //Controllers
 //___________________
-const mainController = require('./controllers/main_controller.js')
-app.use(mainController)
+const mainController = require('./controllers/main_controller.js');
+app.use(mainController);
+const userController = require('./controllers/user_controller.js');
+app.use('/users', userController);
+const sessionController = require('./controllers/sessions_controller.js')
+app.use(sessionController)
+
+
 
 //___________________
 //Welcome
