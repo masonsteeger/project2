@@ -21,7 +21,8 @@ router.get('/home' , (req, res) => {
 router.get('/add', (req, res) => {
   res.render('main/new.ejs',
   {
-    currentUser: req.session.currentUser
+    currentUser: req.session.currentUser,
+    user: req.session.currentUser.username
   })
 })
 router.post('/home', (req, res) => {
@@ -49,11 +50,14 @@ router.put('/clip/:id', (req, res) => {
 
 //Profile Route
 router.get('/user/:id', (req, res) => {
-  res.render('main/profile.ejs',
-  {
-    currentUser:req.session.currentUser
-  }
-)
+  Clip.find({user:req.params.id}, (err, userClips) => {
+    res.render('main/profile.ejs',
+    {
+      clips: userClips,
+      currentUser:req.session.currentUser
+    }
+  )
+  })
 })
 
 
