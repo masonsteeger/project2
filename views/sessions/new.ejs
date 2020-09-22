@@ -1,21 +1,23 @@
 <html lang="en" dir="ltr">
   <head>
-    <title></title>
+    <%-include('../partials/head.ejs')%>
   </head>
   <body>
     <div class="container">
       <div class="log-new">
-        <h1>Log In</h1>
         <br>
-        <form action="/" method="POST">
-          <label for="username">Username:</label>
-          <input id='username' type="text" name="username" required/>
-          <br>
-          <label for="password">Password:</label>
-          <input id='password' type="password" name="password" />
-          <br>
-          <input type="submit" value="Submit">
-        <form>
+        <div class="form-container">
+          <form class= 'form' action="/" method="POST">
+            <h1>Log In</h1>
+            <label for="username">Username:</label>
+            <input id='username' type="text" name="username" required/>
+            <br>
+            <label for="password">Password:</label>
+            <input id='password' type="password" name="password" />
+            <br>
+            <input type="submit" value="Submit">
+          <form>
+        </div>
       </div>
       <br>
       <a href="/">Back To Main Page</a>

@@ -1,24 +1,21 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
-    <title></title>
+    <%-include('../partials/head.ejs')%>
   </head>
   <body>
-    <div class='container'>
-      <div class="log-new">
+    <div class="form-container">
+      <form class="form" action="/users" method="POST">
         <h1>New User</h1>
+        <label for="username">Username:</label>
+        <input type="text" name="username"/>
         <br>
-        <form action="/users" method="POST">
-          <label for="username">Username:</label>
-          <input type="text" name="username"/>
-          <br>
-          <label for="password">Password:</label>
-          <input type="password" name="password"/>
-          <br>
-          <input type="submit" value="Submit">
-        <form>
-      </div><br>
-      <a href="/">Back To Main Page</a>
+        <label for="password">Password:</label>
+        <input type="password" name="password"/>
+        <br>
+        <input type="submit" value="Submit">
+      <form>
     </div>
+    <a href="/">Back To Main Page</a>
   </body>
 </html>

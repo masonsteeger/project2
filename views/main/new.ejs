@@ -1,45 +1,46 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
-    <meta charset="utf-8">
-    <title></title>
+    <%-include('../partials/head.ejs')%>
   </head>
   <body>
-  <h1>This is the new clip page</h1>
   <%-include('../partials/header.ejs')%>
-  <form class="" action="/home" method="POST">
-    <label for="title">Title</label>
-    <input id="title" type="text" name="title" value="">
-    <label for="mode">Game Mode</label>
-    <select id="mode" name="mode">
-      <option value="" selected>Select Game Mode</option>
-      <optgroup label="Casual">
-        <option value="Casual Duel">Casual Duel</option>
-        <option value="Casual Doubles">Casual Doubles</option>
-        <option value="Casual Standard">Casual Standard</option>
-        <option value="Chaos">Chaos</option>
-      </optgroup>
-      <optgroup label="Competitive">
-        <option value="Comp Duel">Comp Duel</option>
-        <option value="Comp Doubles">Comp Doubles</option>
-        <option value="Comp Standard">Comp Standard</option>
-        <option value="Solo Standard">Solo Standard</option>
-      </optgroup>
-      <optgroup label="Extra Modes">
-        <option value="Snow Day">Snow Day</option>
-        <option value="Hoops">Hoops</option>
-        <option value="Dropshot">Dropshot</option>
-        <option value="Rumble">Rumble</option>
-      </optgroup>
-      <optgroup label="Other">
-        <option value="Practice">Practice</option>
-      </optgroup>
-    </select>
-    <label for="link">GifYourGame Video Address</label>
-    <input id="link" type="text" name="link" value="">
-    <input type="hidden" name="user" value="<%=currentUser.username%>">
-    <input type="submit" value="Add Clip">
-  </form>
-  <a href="/home">This is a link Back Home</a>
-  </body>
+  <div class="form-container">
+    <form class="form" action="/home" method="POST">
+      <h1>Add A New Clip</h1>
+      <label for="title">Title</label>
+      <input id="title" type="text" name="title" value="">
+      <label for="mode">Game Mode</label>
+      <select id="mode" name="mode">
+        <option value="" selected>Select Game Mode</option>
+        <optgroup label="Casual">
+          <option value="Casual Duel">Casual Duel</option>
+          <option value="Casual Doubles">Casual Doubles</option>
+          <option value="Casual Standard">Casual Standard</option>
+          <option value="Chaos">Chaos</option>
+        </optgroup>
+        <optgroup label="Competitive">
+          <option value="Comp Duel">Comp Duel</option>
+          <option value="Comp Doubles">Comp Doubles</option>
+          <option value="Comp Standard">Comp Standard</option>
+          <option value="Solo Standard">Solo Standard</option>
+        </optgroup>
+        <optgroup label="Extra Modes">
+          <option value="Snow Day">Snow Day</option>
+          <option value="Hoops">Hoops</option>
+          <option value="Dropshot">Dropshot</option>
+          <option value="Rumble">Rumble</option>
+        </optgroup>
+        <optgroup label="Other">
+          <option value="Practice">Practice</option>
+        </optgroup>
+      </select>
+      <label for="link">GifYourGame Video Address</label>
+      <input id="link" type="text" name="link" value="">
+      <input type="hidden" name="user" value="<%=currentUser.username%>">
+      <input type="submit" value="Add Clip">
+    </form>
+  </div>
+    <a href="/home">This is a link Back Home</a>
+    </body>
 </html>

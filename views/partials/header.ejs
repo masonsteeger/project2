@@ -1,11 +1,11 @@
 <nav>
   <%if(currentUser){%>
     <p>Hello <%=currentUser.username%>!</p>
+    <a href="/add"><button type="button" name="button">Upload Clip</button></a>
     <form action="/login?_method=DELETE" method="POST">
       <input type="submit" value="Log Out"/>
     </form>
   <%}else{%>
     <a href="/users">Create an Account</a><br/><a href="/login">Login</a>
   <%}%>
-
 </nav>
