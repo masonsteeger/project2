@@ -18,7 +18,7 @@ sessions.post('/', (req, res) => {
       res.send('oops the db had an error')
     }else if(!foundUser){
       //if username isn't found
-      res.send('<a href="/sessions">Sorry! No user found</a>')
+      res.send('<a href="/login">Sorry! No user found</a>')
     }else{
       //username is found in database
       if(bcrypt.compareSync(req.body.password, foundUser.password)){
@@ -27,7 +27,7 @@ sessions.post('/', (req, res) => {
         res.redirect('/home')
       }else{
         //password and username dont match
-        res.send('<a href="/sessions">Sorry! password does not match</a>')
+        res.send('<a href="/login">Sorry! password does not match</a>')
       }
     }
   })
