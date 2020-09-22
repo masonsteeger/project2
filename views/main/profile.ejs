@@ -5,15 +5,19 @@
   </head>
   <body>
     <%-include('../partials/header.ejs')%>
-    <h1><%=clips[0].user%>'s Clips</h1>
-    <%for(let key in clips){%>
-      <div class="clips">
-        <h3><%=clips[key].title%></h3>
-        <a href="/clip/<%=clips[key].id%>"><video width= width:'240' height='180' autoplay loop muted>
-          <source src="<%=clips[key].link%>" type="video/mp4">
-        </video></a>
-      </div>
-    <%}%>
-    <a href="/home">This is a link Back Home</a>
+    <div class="profile-stats">
+      <h1><%=clips[0].user.toUpperCase()%>'S PROFILE</h1>
+      <h3><%=clips[0].user%> has posted <%=clips.length%> clips</h3>
+    </div>
+    <div class="clip-container">
+      <%for(let key in clips){%>
+        <div class="clips">
+          <h3><%=clips[key].title%></h3>
+          <a href="/clip/<%=clips[key].id%>"><video width= width:'240' height='180' autoplay loop muted>
+            <source src="<%=clips[key].link%>" type="video/mp4">
+          </video></a>
+        </div>
+      <%}%>
+    </div>
   </body>
 </html>
